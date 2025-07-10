@@ -18,19 +18,3 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-
-  postgres-pedido:
-    image: postgres:15
-    container_name: postgres-pedido
-    restart: always
-    environment:
-      POSTGRES_DB: pedidos
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-    ports:
-      - "5433:5432"
-    volumes:
-      - pedido-db-data:/var/lib/postgresql/data
-
-volumes:
-  pedido-db-data:
