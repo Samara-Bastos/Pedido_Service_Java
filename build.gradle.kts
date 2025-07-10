@@ -24,17 +24,26 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-validation")
+	// Spring Boot
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.flywaydb:flyway-core")
-	implementation("org.flywaydb:flyway-database-postgresql")
-	compileOnly("org.projectlombok:lombok")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
+
+	// Kafka Producer
+	implementation("org.springframework.kafka:spring-kafka")
+
+	// Jackson (JSON)
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+
+	// PostgreSQL + JPA
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly("org.postgresql:postgresql")
-	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	testImplementation("org.springframework.kafka:spring-kafka-test")
+	// Lombok
+	compileOnly("org.projectlombok:lombok:1.18.30")
+	annotationProcessor("org.projectlombok:lombok:1.18.30")
+
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 }
 
 tasks.withType<Test> {
